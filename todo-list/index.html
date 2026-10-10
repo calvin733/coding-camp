@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <!--
+    viewport meta tag penting agar tampilan responsif di HP/tablet.
+    width=device-width  → lebar halaman = lebar layar perangkat
+    initial-scale=1.0   → zoom awal 100%
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+
+  <!-- Menghubungkan file CSS eksternal -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts untuk tampilan lebih modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== KONTAINER UTAMA ===== -->
+  <div class="container">
+
+    <!-- Header / judul aplikasi -->
+    <header class="header">
+      <h1 class="header__title">✅ To-Do List</h1>
+      <!-- Menampilkan jumlah tugas yang belum selesai (diisi oleh JS) -->
+      <p class="header__count">
+        <span id="task-count">0</span> tugas tersisa
+      </p>
+    </header>
+
+    <!-- ===== FORM TAMBAH TUGAS ===== -->
+    <form class="input-area" id="task-form">
+      <input
+        type="text"
+        id="task-input"
+        class="input-area__field"
+        placeholder="Tulis tugas baru..."
+        autocomplete="off"
+        maxlength="120"
+      />
+      <button type="submit" class="btn btn--primary">Tambah</button>
+    </form>
+
+    <!-- ===== FILTER TUGAS ===== -->
+    <div class="filter-bar">
+      <!-- Tombol filter; data-filter dipakai JS untuk tahu filter mana yang aktif -->
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="active">Aktif</button>
+      <button class="filter-btn" data-filter="completed">Selesai</button>
+    </div>
+
+    <!-- ===== DAFTAR TUGAS ===== -->
+    <!--
+      <ul> kosong ini akan diisi secara dinamis oleh JavaScript.
+      Setiap <li> yang ditambahkan JS mewakili satu tugas.
+    -->
+    <ul class="task-list" id="task-list"></ul>
+
+    <!-- Pesan kosong — tampil saat tidak ada tugas -->
+    <p class="empty-msg" id="empty-msg">Tidak ada tugas. Yuk tambahkan! 🎉</p>
+
+    <!-- ===== FOOTER: hapus semua yang selesai ===== -->
+    <footer class="footer">
+      <button class="btn btn--danger" id="clear-completed">Hapus Selesai</button>
+    </footer>
+
+  </div><!-- /container -->
+
+  <!-- Menghubungkan file JavaScript eksternal -->
+  <!-- defer → JS dijalankan setelah HTML selesai di-parse, lebih aman -->
+  <script src="script.js" defer></script>
+</body>
+</html>
